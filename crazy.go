@@ -6,6 +6,19 @@ import (
 	"strings"
 )
 
+func CrazyString(a string, b string) (string, error) {
+	result := ""
+	for idx := range a {
+		r, err := CrazyRune(rune(a[idx]), rune(b[idx]))
+		if err != nil {
+			return "", err
+		}
+		result += string(r)
+	}
+
+	return result, nil
+}
+
 func CrazyInt(a int64, b int64) (int64, error) {
 	a_str := strconv.FormatInt(a, 3)
 	b_str := strconv.FormatInt(b, 3)
