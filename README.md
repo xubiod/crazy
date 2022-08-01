@@ -10,5 +10,5 @@ parsers if they were zero.
 
 ## Why?
 
-It's summer, it's basically hot as hell and Malboge was named after the eighth
+It's summer, it's basically hot as hell and Malbolge was named after the eighth
 circle of hell. It fits.
