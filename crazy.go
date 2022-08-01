@@ -35,13 +35,10 @@ func CrazyInt(a int64, b int64) (int64, error) {
 		}
 	}
 
-	result_str := ""
-	for idx := range a_str {
-		r, err := CrazyRune(rune(a_str[idx]), rune(b_str[idx]))
-		if err != nil {
-			return -1, err
-		}
-		result_str += string(r)
+	result_str, err := CrazyString(a_str, b_str)
+
+	if err != nil {
+		return -1, err
 	}
 
 	return strconv.ParseInt(result_str, 3, 64)
