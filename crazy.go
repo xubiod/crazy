@@ -6,6 +6,8 @@ import (
 	"strings"
 )
 
+// Performs the crazy operation on two strings representing ternary digits.
+// Returns an error if one digit is an invalid character.
 func CrazyString(a string, b string) (string, error) {
 	result := ""
 	for idx := range a {
@@ -19,6 +21,8 @@ func CrazyString(a string, b string) (string, error) {
 	return result, nil
 }
 
+// Performs the crazy operation on two int64s. Turns them into base-3 strings,
+// calls CrazyString and then coverts it back to an int64.
 func CrazyInt(a int64, b int64) (int64, error) {
 	a_str := strconv.FormatInt(a, 3)
 	b_str := strconv.FormatInt(b, 3)
@@ -44,12 +48,17 @@ func CrazyInt(a int64, b int64) (int64, error) {
 	return strconv.ParseInt(result_str, 3, 64)
 }
 
+// The lookup table for the crazy operation on runes. Look at function CrazyRune
+// for indexing.
 var answers = []rune{
 	'1', '1', '2', // b == 0
 	'0', '0', '2', // b == 1
 	'0', '2', '1', // b == 2
 }
 
+// Does the crazy operation on two runes. Checks both for validness ('0', '1',
+// '2') and returns null (0x00) and an error if invalid. If valid, error is nil
+// and returns the resulting operation.
 func CrazyRune(a rune, b rune) (rune, error) {
 	if a < '0' || a > '2' {
 		return 0x00, errors.New("crazy: a rune not valid")
